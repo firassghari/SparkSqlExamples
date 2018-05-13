@@ -11,8 +11,15 @@ object Main {
 
     val schools = readCV("src/main/resources/Schools.csv",spark)
     val players = readCV("src/main/resources/SchoolsPlayers.csv",spark)
+    val AvgYearMinPerSchoolId = getAvgYearMinPerSchoolId(players, spark)
+    System.out.println(AvgYearMinPerSchoolId.show())
 
-    
+
+  }
+  def getAvgYearMinPerSchoolId(schools:DataFrame , session:SparkSession): DataFrame =
+  {
+    schools.createOrReplaceTempView("schoolplayers")
+    return session.sql("select schoolID , avg(yearMin) from schoolplayers group by schoolID ")
   }
   def readCV (path:String , session:SparkSession ):DataFrame  =
   {
