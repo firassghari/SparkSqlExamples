@@ -13,7 +13,8 @@ object Main {
     val schools = readCV("src/main/resources/Schools.csv",spark)
     val players = readCV("src/main/resources/SchoolsPlayers.csv",spark)
     val AvgYearMinPerSchoolId = getAvgYearMinPerSchoolId(players, spark)
-  //  System.out.println(AvgYearMinPerSchoolId.show())joinSchoolAndSchoolPlayers(schools,players,spark).show()
+  //  System.out.println(AvgYearMinPerSchoolId.show())
+    joinSchoolAndSchoolPlayers(schools,players,spark).show()
 
   }
   def joinSchoolAndSchoolPlayers(schools:DataFrame,schoolPlayers:DataFrame , session: SparkSession):DataFrame =
