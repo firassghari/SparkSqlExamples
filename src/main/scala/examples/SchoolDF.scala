@@ -2,7 +2,7 @@ package examples
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
-object Main {
+object SchoolDF {
   def main(args: Array[String]): Unit = {
 
     val spark = org.apache.spark.sql.SparkSession.builder
